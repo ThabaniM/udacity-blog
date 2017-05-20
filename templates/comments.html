@@ -1,0 +1,15 @@
+{% extends "permalink.html" %}
+
+{% block content %}
+<h2>Comments</h2>
+
+<form method="post">
+<label>
+    <div>{{user.name}}</div>
+    <textarea name="comments">{{comments}}</textarea>
+</label>
+
+<div class="error">{{error}}</div>
+<input type="submit">
+</form>
+{% endblock %}

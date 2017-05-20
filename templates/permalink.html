@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+
+{% block content %}
+  {{post.render() | safe}}
+<div class="buttons">
+    <div>
+     	<a href="/blog/edit/{{post.key().id()}}"><button>edit</button></a>
+    </div>
+    <div>
+      	<a href="/blog/{{post.key().id()}}/delete"><button>delete</button></a>
+    </div>
+    <div>
+      	<a href="/blog/{{post.key().id()}}/likes"><button>like</button></a>
+      	<p>total likes: {{total_likes}}</p>
+      	<p>user likes: {{user_likes}}</p>
+    </div>
+
+</div>
+
+<h2>Comments</h2>
+
+<form method="post">
+<label>
+    <div>{{user.name}}</div>
+    <textarea name="comment">{{comment}}</textarea>
+</label>
+
+<div class="error">{{error}}</div>
+<input type="submit">
+</form>
+<br>
+{% for comment in commentss %}
+<div class="comments">
+    <span>{{comment.author}}<span> <span>{{comment.created}}<span>
+	<pre>{{comment.comments}}
+	</pre>
+	<a href="/blog/editcomment/{{post.key().id()}}/{{comment.key().id()}}">edit</a>
+	<a href="/blog/{{post.key().id()}}/{{comment.key().id()}}/delete">delete</a>
+</div>
+{% endfor %}
+  <ul>
+    <a href="/blog"><li>main page</li></a>
+    <a href="/blog/newpost"><li>make new post</li></a> 
+   </ul>
+{% endblock %}
+
+

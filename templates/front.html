@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% for p in posts %}
+    {{ p.render() | safe }}
+    <br><br>
+  {% endfor %}
+
+<!-- for some strange reason html above breaks so I made this code below for when that happens
+<div> 
+
+	{%for post in posts%}
+	<div>
+	<hr>
+		<div>
+			<a href="http://localhost:8080/blog/{{post.key().id()}}">{{post.subject}}</a>
+		</div>
+		<div>{{post.author}}</div>
+	</div>
+	<br>
+	<div>
+		{{post.content}}
+	</div>
+	<br>
+	<hr>
+	  {% endfor %}
+
+
+</div>
+-->
+{% endblock %}
